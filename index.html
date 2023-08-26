@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Insta followers Increser</title>
+</head>
+
+
+<body>
+    <section>
+        <form id="myForm">
+            <div class="">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div class="">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+</body>
+
+</html>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('myForm');
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            // Send the data to your server using fetch or XMLHttpRequest
+            try {
+                const response = await fetch('http://localhost:3000/post', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, email })
+                });
+
+                if (response.ok) {
+                    console.log('Form data submitted successfully');
+                } else {
+                    console.error('Error submitting form data');
+                }
+            } catch (error) {
+                console.error('An error occurred:', error);
+            }
+        });
+    });
+
+</script>
+
+</html>
