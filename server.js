@@ -34,7 +34,8 @@ app.post('/post', async (req, res) => {
 
     const formData = new FormModel({
         name,
-        email
+        email,
+
     });
 
     try {
@@ -45,6 +46,7 @@ app.post('/post', async (req, res) => {
         res.status(500).send('Internal server error');
     }
 });
+
 
 const port = 3000;
 app.listen(port, () => {
